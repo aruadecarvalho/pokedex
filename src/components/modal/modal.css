@@ -1,0 +1,214 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal--container {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  left: 27%;
+  top: 10%;
+  width: 70rem;
+  height: 50rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  z-index: 100;
+}
+
+.modal--type-container {
+  position: absolute;
+  top: 2rem;
+  left: 14rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 0.8rem;
+}
+
+.modal-type-image {
+  width: 2rem;
+  height: 2rem;
+}
+
+.modal--image-container {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(15%, -50%);
+}
+
+.modal-image {
+  height: 18rem;
+  width: 18rem;
+}
+
+.modal--content {
+  width: 100%;
+}
+
+.modal--content-container {
+  padding: 3.6rem 7.2rem 3rem 7.2rem;
+}
+.modal--name-id {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-name {
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #343638;
+}
+
+.modal-id {
+  font-family: "Inter", sans-serif;
+  color: #7d7d7e;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.modal-type-container {
+  display: flex;
+  gap: 1.2rem;
+  padding-top: 1.2rem;
+}
+
+.type-text {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.4rem 1.1rem;
+}
+
+.modal-stats-container {
+  padding-top: 2.4rem;
+  display: flex;
+  gap: 9rem;
+  margin-bottom: 3.2rem;
+}
+.modal-stat-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #7a7d80;
+}
+.modal-stat-value {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  color: #2f3133;
+  min-width: max-content;
+}
+
+.abilities-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.ver-mais-btn {
+  margin-top: 0.6rem;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  transition: all 0.2s;
+  margin-bottom: 0.8rem;
+  min-width: max-content;
+  position: absolute;
+}
+
+.ver-mais-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.extra-abilities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: max-content;
+  position: absolute;
+  top: 3.6rem;
+}
+
+.extra-abilities-text {
+  margin-right: 0.5rem;
+  font-size: 1.4rem;
+  padding: 1rem 1.6rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stats-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #5b5f62;
+  margin-bottom: 0.1rem;
+}
+
+.weaknesses-stats {
+  margin-bottom: 2rem;
+}
+
+.other-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-bar {
+  width: 28rem;
+  height: 0.25rem;
+  background-color: #eff3f6;
+  position: relative;
+}
+
+.stats-bar-percentage {
+  content: "";
+  height: 0.25rem;
+  position: absolute;
+  background-color: #b70303;
+}
+
+.stats-name {
+  min-width: max-content;
+  color: #7a7d80;
+  font-size: 1.2rem;
+}
+
+.stats-list:first-child {
+  margin-top: 0.8rem;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 0.7rem 0;
+}
+
+.list-separator {
+  list-style: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5.6rem;
+  left: 50%;
+  top: 50%;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+}
+
+.stats-separatos {
+  height: 0.4rem;
+  width: 0.4rem;
+  background-color: #ffffff;
+}
