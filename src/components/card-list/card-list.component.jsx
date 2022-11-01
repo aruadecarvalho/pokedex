@@ -6,7 +6,6 @@ const CardList = ({ pokemons }) => {
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [showModal, setShowModal] = useState(false);
 
-  console.log("cardlist render", pokemons);
   return (
     <div className="card-list--container">
       {pokemons.map((pokemon) => (

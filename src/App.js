@@ -25,8 +25,6 @@ const App = () => {
         pokemonsArray.push(data);
       }
 
-      console.log("array dos pokemons", pokemonsArray);
-
       setPokemons(pokemonsArray);
     }
 
@@ -37,7 +35,6 @@ const App = () => {
     const newfilteredPokemons = pokemons.filter((pokemon) => {
       return pokemon.name.toLocaleLowerCase().includes(searchField);
     });
-    console.log("array filtrado", newfilteredPokemons);
     setFilteredPokemons(newfilteredPokemons);
   }, [pokemons, searchField]);
 
