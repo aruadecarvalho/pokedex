@@ -2,6 +2,7 @@ import React from "react";
 import "./modal.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+
 const Modal = ({ setShowModal, selectValue }) => {
   const [showMore, setShowMore] = useState(false);
   const [weaknesses, setWeaknesses] = useState([]);
@@ -15,23 +16,23 @@ const Modal = ({ setShowModal, selectValue }) => {
     "Speed",
   ];
   useEffect(() => {
+    async function fetchType() {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/type/${selectValue.types[0].type.name}`
+      );
+      const data = await response.json();
+      setWeaknesses(data);
+      setFetchDone(true);
+    }
     fetchType();
   }, []);
 
-  async function fetchType() {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/type/${selectValue.types[0].type.name}`
-    );
-    const data = await response.json();
-    setWeaknesses(data);
-    setFetchDone(true);
-  }
   return (
     <div>
       <AnimatePresence>
         <motion.div
           className="modal--container"
-          initial={{ y: 200, opacity: 0 }}
+          initial={{ y: 0, opacity: 0 }}
           animate={{ y: 50, opacity: 1 }}
           exit={{
             y: 300,
@@ -111,7 +112,6 @@ const Modal = ({ setShowModal, selectValue }) => {
                     selectValue.abilities[0].ability.name.slice(1)
                   }`}</p>
                   {selectValue.abilities.length > 1 && (
-                    // return button with 'more' animation and onClick to show more abilities with ${type.type.name}-text class
                     <div className="abilities-container">
                       <button
                         className={`ver-mais-btn type-text ${selectValue.types[0].type.name}-text`}
@@ -172,7 +172,10 @@ const Modal = ({ setShowModal, selectValue }) => {
                 <div className="stats-container">
                   {selectValue.stats.map((stat, index) => {
                     return (
-                      <ul className="stats-list">
+                      <ul
+                        key={`${statsName[index]} ${stat.base_stat} ${index}`}
+                        className="stats-list"
+                      >
                         <li className="stats-item">
                           <p className="stats-name">{statsName[index]}</p>
                           <div className="stats-bar">

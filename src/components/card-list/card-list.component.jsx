@@ -2,15 +2,14 @@ import "./card-list.style.css";
 import { useState } from "react";
 import Modal from "../modal/modal.jsx";
 
-export const CardList = (props) => {
-  console.log(props);
+const CardList = ({ pokemons }) => {
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [showModal, setShowModal] = useState(false);
 
-  console.log("cardlist render", props.pokemons);
+  console.log("cardlist render", pokemons);
   return (
     <div className="card-list--container">
-      {props.pokemons.map((pokemon) => (
+      {pokemons.map((pokemon) => (
         <div
           onClick={() => {
             setSelectedPokemon(pokemon);
@@ -45,3 +44,5 @@ export const CardList = (props) => {
     </div>
   );
 };
+
+export default CardList;

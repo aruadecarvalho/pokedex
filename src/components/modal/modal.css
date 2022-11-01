@@ -14,7 +14,7 @@
   overflow-y: hidden;
   left: 27%;
   top: 10%;
-  width: 70rem;
+  max-width: 70rem;
   height: 50rem;
   background-color: #ffffff;
   border-radius: 15px;
