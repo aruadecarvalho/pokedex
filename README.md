@@ -1,6 +1,5 @@
 # Pokedex
 
-My version of the [MonsterRolodex](https://terieyenike.github.io/rolodex/) project from the introduction module of ZeroToMastery React Course.
 The project consumes an API with 151 pokemons and display them with their corresponding status, and with a search filter by name. I tried to recreat the [CodeBoost PokeApi Project](https://codeboost.com.br/projetos/pokeapi/) .
 
 https://pokedex-arua.netlify.app/
