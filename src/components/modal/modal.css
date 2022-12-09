@@ -12,14 +12,28 @@
   position: fixed;
   overflow-x: hidden;
   overflow-y: hidden;
-  left: 27%;
-  top: 10%;
+  margin: 0 auto;
+  top: 20%;
   max-width: 70rem;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 50rem;
   background-color: #ffffff;
   border-radius: 15px;
   display: flex;
   z-index: 100;
+  animation: modalAnimation 0.3s ease-in-out;
+}
+
+@keyframes modalAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .modal--type-container {

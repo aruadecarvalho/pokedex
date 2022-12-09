@@ -38,7 +38,11 @@ const CardList = ({ pokemons }) => {
         </div>
       ))}
       {showModal && (
-        <Modal setShowModal={setShowModal} selectValue={selectedPokemon} />
+        <Modal
+          setShowModal={setShowModal}
+          selectValue={selectedPokemon}
+          showModal={showModal}
+        />
       )}
     </div>
   );
