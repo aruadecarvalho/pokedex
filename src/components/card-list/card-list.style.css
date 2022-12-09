@@ -7,6 +7,17 @@
   column-gap: 2.4rem;
 }
 
+@media (max-width: 900px) {
+  .card-list--container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-list--container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .card-list--item {
   justify-self: center;
   margin-top: 2.4rem;
@@ -15,7 +26,6 @@
   box-shadow: 0px 15px 50px -5px rgba(183, 189, 193, 0.3);
   border-radius: 9px;
   transition: all 0.5s;
-  /* border: 1px solid red; */
 }
 
 .card-list--item:hover {

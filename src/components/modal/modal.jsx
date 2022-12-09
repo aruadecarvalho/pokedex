@@ -31,26 +31,28 @@ const Modal = ({ setShowModal, selectValue, showModal }) => {
   return (
     <>
       <div className="modal--container">
-        <div className="modal--background">
-          <img
-            src={`https://codeboost.com.br/projetos/pokeapi/img/bg-${selectValue.types[0].type.name}.svg`}
-            alt={`${selectValue.type} background`}
-          />
-        </div>
-        <div className="modal--image-content">
-          <div className="modal--type-container">
+        <div className="modal-pokemon-image--container">
+          <div className="modal--background">
             <img
-              src={`https://codeboost.com.br/projetos/pokeapi/img/${selectValue.types[0].type.name}.svg`}
-              alt={`${selectValue.types[0].type.name}`}
-              className="modal-type-image"
+              src={`https://codeboost.com.br/projetos/pokeapi/img/bg-${selectValue.types[0].type.name}.svg`}
+              alt={`${selectValue.type} background`}
             />
           </div>
-          <div className="modal--image-container">
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${selectValue.id}.svg`}
-              alt={selectValue.name}
-              className="modal-image"
-            />
+          <div className="modal--image-content">
+            <div className="modal--type-container">
+              <img
+                src={`https://codeboost.com.br/projetos/pokeapi/img/${selectValue.types[0].type.name}.svg`}
+                alt={`${selectValue.types[0].type.name}`}
+                className="modal-type-image"
+              />
+            </div>
+            <div className="modal--image-container">
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${selectValue.id}.svg`}
+                alt={selectValue.name}
+                className="modal-image"
+              />
+            </div>
           </div>
         </div>
         <div className="modal--content">

@@ -14,7 +14,7 @@
   overflow-y: hidden;
   margin: 0 auto;
   top: 20%;
-  max-width: 70rem;
+  width: 70rem;
   left: 50%;
   transform: translate(-50%, 0);
   height: 50rem;
@@ -33,6 +33,21 @@
   100% {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal--container {
+    top: 10%;
+    width: calc(100% - 5rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .modal--container {
+    top: 10%;
+    width: calc(100% - 5rem);
+    overflow-x: scroll;
   }
 }
 
