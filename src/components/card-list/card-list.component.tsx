@@ -1,8 +1,13 @@
 import "./card-list.style.css";
 import { useState } from "react";
 import Modal from "../modal/modal.jsx";
+import { Pokemon } from "../../App";
 
-const CardList = ({ pokemons }) => {
+type CardListProps = {
+  pokemons: Pokemon[];
+};
+
+const CardList = ({ pokemons }: CardListProps) => {
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [showModal, setShowModal] = useState(false);
 
@@ -38,10 +43,7 @@ const CardList = ({ pokemons }) => {
         </div>
       ))}
       {showModal && (
-        <Modal
-          setShowModal={setShowModal}
-          selectValue={selectedPokemon}
-        />
+        <Modal setShowModal={setShowModal} selectValue={selectedPokemon} />
       )}
     </div>
   );
