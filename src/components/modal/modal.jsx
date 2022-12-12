@@ -3,18 +3,19 @@ import "./modal.css";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const Modal = ({ setShowModal, selectValue, showModal }) => {
+const statsName = [
+  "HP",
+  "Attack",
+  "Defense",
+  "Sp. Attack",
+  "Sp. Defense",
+  "Speed",
+];
+
+const Modal = ({ setShowModal, selectValue }) => {
   const [showMore, setShowMore] = useState(false);
   const [weaknesses, setWeaknesses] = useState([]);
   const [fetchDone, setFetchDone] = useState(false);
-  const statsName = [
-    "HP",
-    "Attack",
-    "Defense",
-    "Sp. Attack",
-    "Sp. Defense",
-    "Speed",
-  ];
 
   useEffect(() => {
     async function fetchType() {

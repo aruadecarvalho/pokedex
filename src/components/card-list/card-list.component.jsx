@@ -41,7 +41,6 @@ const CardList = ({ pokemons }) => {
         <Modal
           setShowModal={setShowModal}
           selectValue={selectedPokemon}
-          showModal={showModal}
         />
       )}
     </div>
