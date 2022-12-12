@@ -69,9 +69,9 @@ const Modal = ({ setShowModal, selectValue }) => {
               )}`}</p>
             </div>
             <div className="modal-type-container">
-              {selectValue.types.map((type) => {
+              {selectValue.types.map((type, index) => {
                 return (
-                  <div key={`${Number(type.type.name)}`} className="modal-type">
+                  <div key={index} className="modal-type">
                     <p className={`type-text ${type.type.name}-text`}>
                       {type.type.name.charAt(0).toUpperCase() +
                         type.type.name.slice(1)}
@@ -122,6 +122,7 @@ const Modal = ({ setShowModal, selectValue }) => {
                                 scale: 0,
                                 transition: { duration: 1 },
                               }}
+                              key={ability.ability.name}
                             >
                               <p
                                 className={`extra-abilities-text type-text ${selectValue.types[0].type.name}-text`}

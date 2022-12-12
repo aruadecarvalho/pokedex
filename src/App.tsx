@@ -5,7 +5,6 @@ import SearchBox from "./components/search-box/search-box.component";
 
 import { getData } from "./utils/data.utils";
 import "./App.css";
-import axios from "axios";
 
 export type Pokemon = {
   url: string;
@@ -39,9 +38,8 @@ const App = () => {
       const results = response.results;
 
       for (const pokemon of results) {
-        const res = await axios.get(pokemon.url);
-        const data = res.data;
-        pokemonsArray.push(data);
+        const res = await getData<Pokemon>(pokemon.url);
+        pokemonsArray.push(res);
       }
 
       setPokemons(pokemonsArray);
