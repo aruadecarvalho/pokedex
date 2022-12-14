@@ -1,14 +1,14 @@
 import "./card-list.style.css";
 import { useState } from "react";
-import Modal from "../modal/modal.jsx";
-import { Pokemon } from "../../App";
+import Modal from "../modal/modal";
+import { Pokemon } from "../../utils/types";
 
 type CardListProps = {
   pokemons: Pokemon[];
 };
 
 const CardList = ({ pokemons }: CardListProps) => {
-  const [selectedPokemon, setSelectedPokemon] = useState({});
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -42,8 +42,8 @@ const CardList = ({ pokemons }: CardListProps) => {
           </div>
         </div>
       ))}
-      {showModal && (
-        <Modal setShowModal={setShowModal} selectValue={selectedPokemon} />
+      {showModal && selectedPokemon && (
+        <Modal setShowModal={setShowModal} selectedPokemon={selectedPokemon} />
       )}
     </div>
   );

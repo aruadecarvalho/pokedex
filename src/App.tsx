@@ -5,19 +5,7 @@ import SearchBox from "./components/search-box/search-box.component";
 
 import { getData } from "./utils/data.utils";
 import "./App.css";
-
-export type Pokemon = {
-  url: string;
-  name: string;
-  id: number;
-  types: [
-    {
-      type: {
-        name: string;
-      };
-    }
-  ];
-};
+import { Pokemon } from "./utils/types";
 
 type Pokemons = {
   results: Pokemon[];

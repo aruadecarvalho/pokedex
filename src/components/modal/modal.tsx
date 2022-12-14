@@ -2,7 +2,8 @@ import React from "react";
 import "./modal.css";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
+import { Pokemon } from "../../utils/types";
+import { getData } from "../../utils/data.utils";
 const statsName = [
   "HP",
   "Attack",
@@ -12,18 +13,32 @@ const statsName = [
   "Speed",
 ];
 
-const Modal = ({ setShowModal, selectValue }) => {
+type ModalProps = {
+  setShowModal: (showModal: boolean) => void;
+  selectedPokemon: Pokemon;
+};
+
+type Weaknesses = {
+  damage_relations: {
+    double_damage_from: [
+      {
+        name: string;
+      }
+    ];
+  };
+};
+
+const Modal = ({ setShowModal, selectedPokemon }: ModalProps) => {
   const [showMore, setShowMore] = useState(false);
-  const [weaknesses, setWeaknesses] = useState([]);
+  const [weaknesses, setWeaknesses] = useState<Weaknesses | null>(null);
   const [fetchDone, setFetchDone] = useState(false);
 
   useEffect(() => {
     async function fetchType() {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/type/${selectValue.types[0].type.name}`
+      const response = await getData<Weaknesses>(
+        `https://pokeapi.co/api/v2/type/${selectedPokemon.types[0].type.name}`
       );
-      const data = await response.json();
-      setWeaknesses(data);
+      setWeaknesses(response);
       setFetchDone(true);
     }
     fetchType();
@@ -35,22 +50,22 @@ const Modal = ({ setShowModal, selectValue }) => {
         <div className="modal-pokemon-image--container">
           <div className="modal--background">
             <img
-              src={`https://codeboost.com.br/projetos/pokeapi/img/bg-${selectValue.types[0].type.name}.svg`}
-              alt={`${selectValue.type} background`}
+              src={`https://codeboost.com.br/projetos/pokeapi/img/bg-${selectedPokemon.types[0].type.name}.svg`}
+              alt={`${selectedPokemon.type} background`}
             />
           </div>
           <div className="modal--image-content">
             <div className="modal--type-container">
               <img
-                src={`https://codeboost.com.br/projetos/pokeapi/img/${selectValue.types[0].type.name}.svg`}
-                alt={`${selectValue.types[0].type.name}`}
+                src={`https://codeboost.com.br/projetos/pokeapi/img/${selectedPokemon.types[0].type.name}.svg`}
+                alt={`${selectedPokemon.types[0].type.name}`}
                 className="modal-type-image"
               />
             </div>
             <div className="modal--image-container">
               <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${selectValue.id}.svg`}
-                alt={selectValue.name}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${selectedPokemon.id}.svg`}
+                alt={selectedPokemon.name}
                 className="modal-image"
               />
             </div>
@@ -60,16 +75,16 @@ const Modal = ({ setShowModal, selectValue }) => {
           <div className="modal--content-container">
             <div className="modal--name-id">
               <p className="modal-name">{`${
-                selectValue.name.charAt(0).toUpperCase() +
-                selectValue.name.slice(1)
+                selectedPokemon.name.charAt(0).toUpperCase() +
+                selectedPokemon.name.slice(1)
               }`}</p>
-              <p className="modal-id">{`#${String(selectValue.id).padStart(
+              <p className="modal-id">{`#${String(selectedPokemon.id).padStart(
                 3,
                 "0"
               )}`}</p>
             </div>
             <div className="modal-type-container">
-              {selectValue.types.map((type, index) => {
+              {selectedPokemon.types.map((type, index) => {
                 return (
                   <div key={index} className="modal-type">
                     <p className={`type-text ${type.type.name}-text`}>
@@ -84,34 +99,34 @@ const Modal = ({ setShowModal, selectValue }) => {
               <div className="height-stats">
                 <p className="modal-stat-title">Height</p>
                 <p className="modal-stat-value">{`${
-                  Number(selectValue.height) / 10
+                  Number(selectedPokemon.height) / 10
                 }m`}</p>
               </div>
               <div className="weight-stats">
                 <p className="modal-stat-title">Weight</p>
                 <p className="modal-stat-value">{`${
-                  Number(selectValue.weight) / 10
+                  Number(selectedPokemon.weight) / 10
                 }kg`}</p>
               </div>
               <div className="abilities-stats">
                 <p className="modal-stat-title">Abilities</p>
                 <p className="modal-stat-value">{`${
-                  selectValue.abilities[0].ability.name
+                  selectedPokemon.abilities[0].ability.name
                     .charAt(0)
                     .toUpperCase() +
-                  selectValue.abilities[0].ability.name.slice(1)
+                  selectedPokemon.abilities[0].ability.name.slice(1)
                 }`}</p>
-                {selectValue.abilities.length > 1 && (
+                {selectedPokemon.abilities.length > 1 && (
                   <div className="abilities-container">
                     <button
-                      className={`ver-mais-btn type-text ${selectValue.types[0].type.name}-text`}
+                      className={`ver-mais-btn type-text ${selectedPokemon.types[0].type.name}-text`}
                       onClick={() => setShowMore(!showMore)}
                     >
                       Ver mais...
                     </button>
                     <div className="extra-abilities-container">
                       {showMore &&
-                        selectValue.abilities.slice(1).map((ability) => {
+                        selectedPokemon.abilities.slice(1).map((ability) => {
                           return (
                             <motion.div
                               initial={{ y: -50, opacity: 0 }}
@@ -125,7 +140,7 @@ const Modal = ({ setShowModal, selectValue }) => {
                               key={ability.ability.name}
                             >
                               <p
-                                className={`extra-abilities-text type-text ${selectValue.types[0].type.name}-text`}
+                                className={`extra-abilities-text type-text ${selectedPokemon.types[0].type.name}-text`}
                               >
                                 {ability.ability.name.charAt(0).toUpperCase() +
                                   ability.ability.name.slice(1)}
@@ -142,6 +157,7 @@ const Modal = ({ setShowModal, selectValue }) => {
               <p className="stats-title">Weaknesses</p>
               <div className="weaknesses-container modal-type-container">
                 {fetchDone &&
+                  weaknesses &&
                   weaknesses.damage_relations.double_damage_from.map(
                     (weakness) => {
                       return (
@@ -159,7 +175,7 @@ const Modal = ({ setShowModal, selectValue }) => {
             <div className="other-stats">
               <p className="stats-title">Stats</p>
               <div className="stats-container">
-                {selectValue.stats.map((stat, index) => {
+                {selectedPokemon.stats.map((stat, index) => {
                   return (
                     <ul
                       key={`${statsName[index]} ${stat.base_stat} ${index}`}
