@@ -2,7 +2,13 @@
 
 The project consumes an API with 151 pokemons and display them with their corresponding status, and with a search filter by name. I tried to recreat the [CodeBoost PokeApi Project](https://codeboost.com.br/projetos/pokeapi/) .
 
+## Demo
+
 https://pokedex-arua.netlify.app/
+
+![image](https://user-images.githubusercontent.com/103606795/207615745-0cc4bf73-a823-4fd1-87b8-a993768f352f.png)
+![image](https://user-images.githubusercontent.com/103606795/207615959-85fe77ce-93e7-4663-8d7a-353d91d47c10.png)
+
 
 ## Lessons Learned
 
